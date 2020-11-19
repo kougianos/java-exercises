@@ -14,6 +14,7 @@ package com.javaexercices.kougianos.quiz;
 public class Switcharoo {
     public static String flipEndChars(String s) {
 
+
         if (s.length() < 2) {
             return "Incompatible.";
         }
