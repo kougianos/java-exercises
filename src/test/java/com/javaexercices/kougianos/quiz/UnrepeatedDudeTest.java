@@ -27,6 +27,4 @@ public class UnrepeatedDudeTest {
     public void test5() {
         assertEquals("altwf es", UnrepeatedDude.unrepeated("altwaff test"));
     }
-
-
 }

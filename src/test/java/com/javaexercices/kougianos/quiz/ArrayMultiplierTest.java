@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class ArrayMultiplierTest {
-
     @Test
     public void test01() {
         assertArrayEquals(new Object[][]{{4,4},{5,5}}, ArrayMultiplier.multiply(new Object[]{4,5}));

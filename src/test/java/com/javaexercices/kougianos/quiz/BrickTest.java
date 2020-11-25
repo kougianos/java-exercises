@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class BrickTest {
-
     @Test
     public void test1() {
         assertEquals(true, Brick.doesBrickFit(1,1,1, 1,1));

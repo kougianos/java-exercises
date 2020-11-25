@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TruthyOrFalsyTest {
-
     @Test
     public void test01() {
         assertEquals(true, TruthyOrFalsy.allTruthy(true, true, true));
@@ -65,5 +64,4 @@ public class TruthyOrFalsyTest {
     public void test12() {
         assertEquals(false, TruthyOrFalsy.allTruthy(true, 0.1f, "", true, true));
     }
-
 }

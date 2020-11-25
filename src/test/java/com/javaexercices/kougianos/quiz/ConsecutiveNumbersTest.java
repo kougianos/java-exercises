@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConsecutiveNumbersTest {
-
     @Test
     public void test1() {
         assertEquals(true, ConsecutiveNumbers.cons(new int[]{5, 1, 4, 3, 2}));
@@ -35,6 +34,4 @@ public class ConsecutiveNumbersTest {
     public void test6() {
         assertEquals(false, ConsecutiveNumbers.cons(new int[]{5, 3}));
     }
-
-
 }

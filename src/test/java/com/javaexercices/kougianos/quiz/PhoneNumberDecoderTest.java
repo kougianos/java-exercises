@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PhoneNumberDecoderTest {
-
     @Test
     public void test1() {
         assertEquals("123-647-3937", PhoneNumberDecoder.textToNum("123-647-EYES"));
@@ -35,5 +34,4 @@ public class PhoneNumberDecoderTest {
     public void test6() {
         assertEquals("(025)445-6741", PhoneNumberDecoder.textToNum("(025)445-6741"));
     }
-    
 }
