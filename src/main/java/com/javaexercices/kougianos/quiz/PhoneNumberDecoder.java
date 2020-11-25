@@ -18,11 +18,6 @@ import java.util.Map;
  */
 public class PhoneNumberDecoder {
 
-    public static void main(String[] args) {
-        String result = textToNum("123-647-EYES");
-        System.out.print(result);
-    }
-
     public static String textToNum(String phone) {
 
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
