@@ -27,5 +27,4 @@ public class PigLatinTranslationTest {
     public void test5() {
         assertEquals("Urryhay!", PigLatinTranslation.pigLatin("Hurry!"));
     }
-    
 }
