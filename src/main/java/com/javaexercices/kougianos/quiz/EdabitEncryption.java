@@ -21,11 +21,10 @@ public class EdabitEncryption {
         int j=0;
 
         while (true) {
-            for (int i = 0; i < grid.length; i++) {
+            for (String value : grid) {
                 try {
-                    sb.append(grid[i].charAt(j));
-                } catch (IndexOutOfBoundsException e) {
-                    continue;
+                    sb.append(value.charAt(j));
+                } catch (IndexOutOfBoundsException ignored) {
                 }
             }
             matrix.add(String.valueOf(sb));
