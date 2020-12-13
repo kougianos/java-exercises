@@ -17,10 +17,6 @@ import java.util.List;
  */
 public class CapitalChallenge {
 
-    public static void main(String[] args) {
-        String result = selectLetters("EVERYTHING", "SomeThings");
-    }
-
     public static String selectLetters(String s1, String s2) {
 
         int length = Math.max(s1.length(), s2.length());
