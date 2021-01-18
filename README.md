@@ -2,7 +2,8 @@
 Algorithmic exercises and puzzles implemented in Java 11.
 
 Quiz sources:  
-&emsp;	https://edabit.com/challenges/java
+&emsp;	https://edabit.com/challenges/java <br>
+&emsp;	https://www.hackerrank.com/
 
 Levels: Hard, Very Hard, Expert
 
