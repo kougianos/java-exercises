@@ -8,3 +8,4 @@ Quiz sources:
 Levels: Hard, Very Hard, Expert
 
 All challenges have been developed from scratch without checking the solutions.
+ 
