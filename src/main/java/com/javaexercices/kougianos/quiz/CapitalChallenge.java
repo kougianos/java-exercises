@@ -19,11 +19,7 @@ public class CapitalChallenge {
 
     public static String selectLetters(String s1, String s2) {
 
-        int length = Math.max(s1.length(), s2.length());
-        List<Integer> capitals1 = new ArrayList<>();
-        List<Integer> capitals2 = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-
         for (int i = 0; i < s2.length(); i++) {
             try {
                 if(Character.isUpperCase(s2.charAt(i))) {
