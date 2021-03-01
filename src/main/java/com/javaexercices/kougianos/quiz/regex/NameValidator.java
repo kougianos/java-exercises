@@ -44,6 +44,13 @@ public class NameValidator {
         throw new IllegalStateException("Utility class");
     }
 
+    public static void main(String[] args) {
+        hyphenSanitizer("--hello----my-man---howareyou--");
+        hyphenSanitizer("hello-my-man-howareyou");
+        hyphenSanitizer("hello-my-man-how-are-you");
+        hyphenSanitizer("------------hello-my-man-how-are-you");
+    }
+
     public static boolean validName(String str) {
 
         String[] array = str.split("\\s");
@@ -63,6 +70,27 @@ public class NameValidator {
         Matcher m = p.matcher(str);
         return m.matches();
 
+    }
+
+    /**
+     * This function removes hyphens from the end and start of a string, and if more that one hyphens exist
+     * in the middle of the string they are removed as well leaving only one in each occurrence.
+     * Eg.
+     * --hello----my-man---how-are--you--  => hello-my-man-how-are-you
+     *
+     * @param str String
+     * @return String
+     */
+    public static String hyphenSanitizer(String str) {
+        final String regex = "-+";
+        str = str.replaceAll(regex, "-");
+        if (str.startsWith("-")) {
+            str = str.replaceFirst("-", "");
+        }
+        if (str.endsWith("-")) {
+            str = str.replaceAll("-$", "");
+        }
+        return str;
     }
 
 }
