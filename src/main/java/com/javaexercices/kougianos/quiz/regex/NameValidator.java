@@ -44,13 +44,6 @@ public class NameValidator {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void main(String[] args) {
-        hyphenSanitizer("--hello----my-man---howareyou--");
-        hyphenSanitizer("hello-my-man-howareyou");
-        hyphenSanitizer("hello-my-man-how-are-you");
-        hyphenSanitizer("------------hello-my-man-how-are-you");
-    }
-
     public static boolean validName(String str) {
 
         String[] array = str.split("\\s");
