@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LineSegmentTest {
+class LineSegmentTest {
     @Test
-    public void test1() {
+    void test1() {
         int[][] arr = new int[2][3];
         arr[0][0] = 15;
         arr[0][1] = 7;
@@ -19,7 +19,7 @@ public class LineSegmentTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         int[][] arr = new int[2][3];
         arr[0][0] = 1;
         arr[0][1] = 1;
@@ -31,7 +31,7 @@ public class LineSegmentTest {
     }
 
     @Test
-    public void test3() {
+    void test3() {
         int[][] arr = new int[2][3];
         arr[0][0] = -33;
         arr[0][1] = 33;
@@ -43,7 +43,7 @@ public class LineSegmentTest {
     }
 
     @Test
-    public void test4() {
+    void test4() {
         int[][] arr = new int[2][3];
         arr[0][0] = 1;
         arr[0][1] = 2;
@@ -55,7 +55,7 @@ public class LineSegmentTest {
     }
 
     @Test
-    public void test5() {
+    void test5() {
         int[][] arr = new int[2][3];
         arr[0][0] = 719;
         arr[0][1] = 10;
@@ -67,7 +67,7 @@ public class LineSegmentTest {
     }
 
     @Test
-    public void test6() {
+    void test6() {
         int[][] arr = new int[2][3];
         arr[0][0] = -11;
         arr[0][1] = -12;
@@ -79,7 +79,7 @@ public class LineSegmentTest {
     }
 
     @Test
-    public void test7() {
+    void test7() {
         int[][] arr = new int[2][3];
         arr[0][0] = 0;
         arr[0][1] = 0;

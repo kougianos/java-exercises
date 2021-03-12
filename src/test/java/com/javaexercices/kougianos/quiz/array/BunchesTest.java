@@ -8,10 +8,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class BunchesTest {
+class BunchesTest {
 
     @Test
-    public void test01() {
+    void test01() {
         List<Fruit> b = new ArrayList<Fruit>();
         b.add(new Fruit("bananas", 1));
         List<Fruit> r = new ArrayList<Fruit>();
@@ -20,7 +20,7 @@ public class BunchesTest {
     }
 
     @Test
-    public void test02() {
+    void test02() {
         List<Fruit> b = new ArrayList<Fruit>();
         b.add(new Fruit("bananas", 2));
         List<Fruit> r = new ArrayList<Fruit>();
@@ -29,7 +29,7 @@ public class BunchesTest {
     }
 
     @Test
-    public void test03() {
+    void test03() {
         List<Fruit> b = new ArrayList<Fruit>();
         String[] fruit = new String[] {"bananas", "grapes"};
         int[] quantity = new int[] {2, 2};
@@ -40,7 +40,7 @@ public class BunchesTest {
     }
 
     @Test
-    public void test04() {
+    void test04() {
         List<Fruit> b = new ArrayList<Fruit>();
         String[] fruit = new String[] {"cherry tomatoes", "bananas", "grapes", "cherry tomatoes"};
         int[] quantity = new int[] {2, 1, 2, 3};

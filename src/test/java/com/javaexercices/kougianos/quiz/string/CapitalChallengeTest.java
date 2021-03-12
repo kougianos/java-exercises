@@ -5,34 +5,34 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CapitalChallengeTest {
+class CapitalChallengeTest {
     @Test
-    public void test1() {
+    void test1() {
         assertEquals("help", CapitalChallenge.selectLetters("heLLO", "GUlp"));
     }
 
     @Test
-    public void test2() {
+    void test2() {
         assertEquals("135", CapitalChallenge.selectLetters("1234567", "XxXxX"));
     }
 
     @Test
-    public void test3() {
+    void test3() {
         assertEquals("EYSomeThings", CapitalChallenge.selectLetters("EVERYTHING", "SomeThings"));
     }
 
     @Test
-    public void test4() {
+    void test4() {
         assertEquals("atrpten", CapitalChallenge.selectLetters("PaTtErN", "pAtTeRn"));
     }
 
     @Test
-    public void test5() {
+    void test5() {
         assertEquals("", CapitalChallenge.selectLetters("nothing", "nothing"));
     }
 
     @Test
-    public void test6() {
+    void test6() {
         assertEquals("What doR", CapitalChallenge.selectLetters("What do you think of it so far?", "RUBBISH!"));
     }
 }
