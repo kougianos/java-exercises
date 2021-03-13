@@ -47,7 +47,7 @@ public class NameValidator {
     public static boolean validName(String str) {
 
         String[] array = str.split("\\s");
-        String regex = "";
+        String regex;
         if (array.length < 2 || array.length > 3) {
             return false;
         } else if (array.length == 2) {

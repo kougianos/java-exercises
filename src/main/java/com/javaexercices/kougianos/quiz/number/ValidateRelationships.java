@@ -26,6 +26,9 @@ import java.util.List;
  */
 public class ValidateRelationships {
 
+    private ValidateRelationships() {
+    }
+
     public static boolean validateTheRelationships(String str) {
 
         List<String> symbolsList = Arrays.asList("=", "<", ">", ">=", "<=");
@@ -76,27 +79,27 @@ public class ValidateRelationships {
             String operation = symbols.get(i);
             switch (operation) {
                 case "<":
-                    if (!(Integer.parseInt(numbers.get(i)) < Integer.parseInt(numbers.get(i + 1)))) {
+                    if ((Integer.parseInt(numbers.get(i)) >= Integer.parseInt(numbers.get(i + 1)))) {
                         return false;
                     }
                     break;
                 case ">":
-                    if (!(Integer.valueOf(numbers.get(i)) > Integer.valueOf(numbers.get(i + 1)))) {
+                    if ((Integer.parseInt(numbers.get(i)) <= Integer.parseInt(numbers.get(i + 1)))) {
                         return false;
                     }
                     break;
                 case "=":
-                    if (!(Integer.valueOf(numbers.get(i)) == Integer.valueOf(numbers.get(i + 1)))) {
+                    if ((Integer.parseInt(numbers.get(i)) != Integer.parseInt(numbers.get(i + 1)))) {
                         return false;
                     }
                     break;
                 case "<=":
-                    if (!(Integer.valueOf(numbers.get(i)) <= Integer.valueOf(numbers.get(i + 1)))) {
+                    if ((Integer.parseInt(numbers.get(i)) > Integer.parseInt(numbers.get(i + 1)))) {
                         return false;
                     }
                     break;
                 case ">=":
-                    if (!(Integer.valueOf(numbers.get(i)) >= Integer.valueOf(numbers.get(i + 1)))) {
+                    if ((Integer.parseInt(numbers.get(i)) < Integer.parseInt(numbers.get(i + 1)))) {
                         return false;
                     }
                     break;
