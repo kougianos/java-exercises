@@ -9,6 +9,10 @@ package com.javaexercices.kougianos.quiz.number;
  */
 public class AlternateSigner {
 
+    private AlternateSigner(){
+
+    }
+
     public static boolean alternateSign(int[] arr) {
 
         if (arr.length == 0 || arr[0] == 0) {

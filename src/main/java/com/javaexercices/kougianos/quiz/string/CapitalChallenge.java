@@ -1,8 +1,5 @@
 package com.javaexercices.kougianos.quiz.string;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Given two strings, s1 and s2, select only the characters in each string where the
  * character in the same position in the other string is in uppercase. Return these as a single string.
@@ -16,6 +13,10 @@ import java.util.List;
  * selectLetters("EVERYTHING", "SomeThings") ➞  "EYSomeThings"
  */
 public class CapitalChallenge {
+
+    private CapitalChallenge(){
+
+    }
 
     public static String selectLetters(String s1, String s2) {
 

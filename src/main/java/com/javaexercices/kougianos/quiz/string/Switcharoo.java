@@ -12,6 +12,11 @@ package com.javaexercices.kougianos.quiz.string;
  * flipEndChars("z") ➞ "Incompatible."<br>
  */
 public class Switcharoo {
+
+    private Switcharoo() {
+
+    }
+
     public static String flipEndChars(String s) {
 
 

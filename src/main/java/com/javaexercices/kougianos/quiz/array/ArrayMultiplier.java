@@ -2,6 +2,10 @@ package com.javaexercices.kougianos.quiz.array;
 
 public class ArrayMultiplier {
 
+    private ArrayMultiplier() {
+
+    }
+
     public static Object[][] multiply(Object[] items) {
 
         Object[][] objects = new Object[items.length][items.length];

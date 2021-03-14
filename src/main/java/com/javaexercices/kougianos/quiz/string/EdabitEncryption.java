@@ -9,6 +9,10 @@ import java.util.List;
  */
 public class EdabitEncryption {
 
+    private EdabitEncryption(){
+
+    }
+
     public static String encryption(String s) {
 
         s = s.replace(" ", "");

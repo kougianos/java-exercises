@@ -18,6 +18,10 @@ import java.util.Map;
  */
 public class PhoneNumberDecoder {
 
+    private PhoneNumberDecoder() {
+
+    }
+
     public static String textToNum(String phone) {
 
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

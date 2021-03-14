@@ -11,6 +11,10 @@ package com.javaexercices.kougianos.quiz.string;
  */
 public class UnrepeatedDude {
 
+    private UnrepeatedDude() {
+
+    }
+
     public static String unrepeated(String word) {
         final StringBuilder output = new StringBuilder();
 

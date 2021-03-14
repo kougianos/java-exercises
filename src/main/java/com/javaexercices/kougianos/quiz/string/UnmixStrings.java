@@ -11,6 +11,10 @@ package com.javaexercices.kougianos.quiz.string;
  */
 public class UnmixStrings {
 
+    private UnmixStrings() {
+
+    }
+
     public static String unmix(String str) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i+=2) {

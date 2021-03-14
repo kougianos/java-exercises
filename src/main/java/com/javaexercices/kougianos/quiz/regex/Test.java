@@ -6,5 +6,6 @@ package com.javaexercices.kougianos.quiz.regex;
 public class Test {
 
     public static void main(String[] args) {
+        // Test class
     }
 }

@@ -27,6 +27,10 @@ package com.javaexercices.kougianos.quiz.number;
  */
 public class Persistence {
 
+    private Persistence() {
+
+    }
+
     public static int additivePersistence(int n) {
 
         String number = String.valueOf(n);

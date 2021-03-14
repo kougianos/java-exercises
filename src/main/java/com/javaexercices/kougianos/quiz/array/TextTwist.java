@@ -27,6 +27,10 @@ import java.util.Map;
  */
 public class TextTwist {
 
+    private TextTwist() {
+
+    }
+
     public static int totalPoints(String[] guesses, String word) {
 
         Map<Integer, Integer> letters2points = Map.of(

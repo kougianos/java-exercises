@@ -14,6 +14,11 @@ import java.util.Arrays;
  * // 97 contains the number seven.<br>
  */
 public class SevenBoom {
+
+    private SevenBoom() {
+
+    }
+
     public static String boom(int[] arr) {
         return Arrays.stream(arr).boxed()
                 .map(String::valueOf)

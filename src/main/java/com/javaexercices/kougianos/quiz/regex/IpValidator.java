@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 
 public class IpValidator {
 
+    private IpValidator(){
+
+    }
+
     public static boolean isValidIPAddress(String ip) {
 
         if (ip == null) {

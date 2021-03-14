@@ -16,6 +16,10 @@ import java.util.stream.Collectors;
  */
 public class PigLatinTranslation {
 
+    private PigLatinTranslation() {
+
+    }
+
     public static String pigLatin(String str) {
 
         List<String> words = Arrays.asList(str.split(" "));
@@ -41,9 +45,9 @@ public class PigLatinTranslation {
                 })
                 .collect(Collectors.toList());
 
-        words.set(0, words.get(0).substring(0,1).toUpperCase() + words.get(0).substring(1));
+        words.set(0, words.get(0).substring(0, 1).toUpperCase() + words.get(0).substring(1));
 
-        return String.join(" ",words);
+        return String.join(" ", words);
 
     }
 

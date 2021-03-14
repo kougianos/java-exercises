@@ -17,6 +17,10 @@ import java.util.stream.Collectors;
  */
 public class TruthyOrFalsy {
 
+    private TruthyOrFalsy() {
+
+    }
+
     public static boolean allTruthy(Object... values) {
 
         if (values.length == 0) {

@@ -18,6 +18,10 @@ import java.util.stream.Collectors;
  */
 public class ConsecutiveNumbers {
 
+    private ConsecutiveNumbers() {
+
+    }
+
     public static boolean cons(int[] arr) {
 
         List<Integer> list = Arrays.stream(arr).boxed().sorted()

@@ -9,6 +9,10 @@ package com.javaexercices.kougianos.quiz.string;
  */
 public class FindMissingLetter {
 
+    private FindMissingLetter(){
+
+    }
+
     public static String missingLetter(String[] arr) {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         String arrToString = String.join("", arr).toLowerCase();

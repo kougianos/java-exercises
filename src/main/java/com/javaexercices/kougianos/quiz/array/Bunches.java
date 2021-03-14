@@ -30,6 +30,10 @@ import java.util.List;
  */
 public class Bunches {
 
+    private Bunches() {
+
+    }
+
     public static List<Fruit> splitBunches(List<Fruit> bunches) {
 
         Iterator<Fruit> iter = bunches.iterator();

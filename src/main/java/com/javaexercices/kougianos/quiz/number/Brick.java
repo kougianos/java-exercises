@@ -10,6 +10,10 @@ package com.javaexercices.kougianos.quiz.number;
  */
 public class Brick {
 
+    private Brick(){
+
+    }
+
     public static boolean doesBrickFit(int a, int b, int c, int w, int h) {
 
         int size1 = a * b;

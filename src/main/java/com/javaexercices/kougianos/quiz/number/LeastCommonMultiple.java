@@ -2,6 +2,10 @@ package com.javaexercices.kougianos.quiz.number;
 
 public class LeastCommonMultiple {
 
+    private LeastCommonMultiple(){
+
+    }
+
     public static int lcm(int number1, int number2) {
         if (number1 == 0 || number2 == 0) {
             return 0;
