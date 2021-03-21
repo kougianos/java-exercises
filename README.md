@@ -1,5 +1,5 @@
 ## java-exercises
-Algorithmic exercises and puzzles implemented in Java 11.
+Algorithmic exercises and challenges implemented in Java 11.
 
 Quiz sources:  
 &emsp;	https://edabit.com/challenges/java <br>
