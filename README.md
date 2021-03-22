@@ -10,5 +10,6 @@ Levels: Very Hard, Expert
 All challenges have been developed from scratch without checking the solutions. <br>
 Each challenge has been implemented in a distinct Java class with a public static method 
 and contains corresponding unit tests in the test folder. <br>
-E.g. Brick.java (challenge) -> BrickTest.java (unit tests)
+Example: <br>
+`Brick.java (challenge) -> BrickTest.java (unit tests)`
  
