@@ -25,9 +25,9 @@ public class TelcoUtils {
     }
 
     /**
-     * validate that a msisdn:
-     * - is 10/12 digits long
-     * - starts with 3069 or 69
+     * validate that a cli:
+     * - is 10 digits long
+     * - starts with 2
      * - all characters are numeric
      *
      * @param cli String
