@@ -1,4 +1,4 @@
-package com.javaexercices.kougianos.telco;
+package com.javaexercices.kougianos.util;
 
 import org.apache.commons.lang3.StringUtils;
 
