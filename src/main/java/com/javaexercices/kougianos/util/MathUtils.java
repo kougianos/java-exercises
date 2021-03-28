@@ -1,8 +1,6 @@
 package com.javaexercices.kougianos.util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MathUtils {
 
@@ -11,13 +9,22 @@ public class MathUtils {
     }
 
     /**
-     * Find all factors of a given number and return them in a list, in ascending order.
-     * @param num int
-     * @return List<Integer>
+     * Find all factors of a given number and return them in a Set (better performance) or List, in ascending order.
+     * Use the function with returnListFlag true for List returned.
+     *
+     * @param num            int
+     * @param returnListFlag boolean
+     * @return Collection<Integer>
      */
-    public static List<Integer> findFactors(int num) {
+    public static Collection<Integer> findFactors(int num, boolean returnListFlag) {
 
-        ArrayList<Integer> factors = new ArrayList<>();
+        Collection<Integer> factors;
+
+        if (returnListFlag) {
+            factors = new ArrayList<>();
+        } else {
+            factors = new HashSet<>();
+        }
 
         // Skip two if the number is odd
         int incrementer = num % 2 == 0 ? 1 : 2;
@@ -36,15 +43,28 @@ public class MathUtils {
             }
         }
 
-        // Sort the list of factors
-        Collections.sort(factors);
+        // Sort the list of factors, in case of returned list
+        if (returnListFlag) {
+            Collections.sort((List<Integer>) factors);
+        }
 
         return factors;
 
     }
 
     /**
+     * Method overloading, findFactors function with default value returnListFlag = false, if omitted.
+     *
+     * @param num int
+     * @return Set<Integer>
+     */
+    public static Set<Integer> findFactors(int num) {
+        return (Set<Integer>) findFactors(num, false);
+    }
+
+    /**
      * Return the least common multiple of 2 numbers.
+     *
      * @param number1 int
      * @param number2 int
      * @return int

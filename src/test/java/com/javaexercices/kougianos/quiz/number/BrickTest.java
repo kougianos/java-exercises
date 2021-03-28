@@ -1,6 +1,5 @@
 package com.javaexercices.kougianos.quiz.number;
 
-import com.javaexercices.kougianos.quiz.number.Brick;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
