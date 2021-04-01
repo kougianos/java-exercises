@@ -1,6 +1,7 @@
 package com.javaexercices.kougianos.util;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class MathUtils {
 
@@ -82,6 +83,16 @@ public class MathUtils {
             lcm += absHigherNumber;
         }
         return lcm;
+    }
+
+    /**
+     * Private method that checks whether a given number is prime or not, using lambda expression.
+     * @param number int
+     * @return boolean
+     */
+    public static boolean isPrime(int number) {
+        return IntStream.rangeClosed(2, (int) (Math.sqrt(number)))
+                .allMatch(n -> number % n != 0);
     }
 
 }
