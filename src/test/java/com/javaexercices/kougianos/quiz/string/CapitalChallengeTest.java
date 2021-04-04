@@ -1,6 +1,5 @@
 package com.javaexercices.kougianos.quiz.string;
 
-import com.javaexercices.kougianos.quiz.string.CapitalChallenge;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
