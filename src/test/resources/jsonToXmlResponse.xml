@@ -1,0 +1,61 @@
+<xml-item>
+    <additionalImageLinks>http://www.tailspintoys.com/images?id=123def</additionalImageLinks>
+    <additionalImageLinks>http://www.tailspintoys.com/images?id=567def</additionalImageLinks>
+    <color>Blue</color>
+    <gender>female</gender>
+    <channel>online</channel>
+    <link>http://www.tailspintoys.com/girls/apparel?id=9d0s-a934</link>
+    <salePriceEffectiveDate>2016-06-14T08:00:00-08:00/2016-06-21T17:00:00-08:00</salePriceEffectiveDate>
+    <description>Charming sundress perfect for lunch out on the town.</description>
+    <onlineOnly>False</onlineOnly>
+    <taxes>
+        <country>US</country>
+        <rate>9.9</rate>
+        <region>CA</region>
+        <taxShip>True</taxShip>
+    </taxes>
+    <availability>in stock</availability>
+    <title>Cute Toddler Sundress</title>
+    <itemGroupId>abc123def456</itemGroupId>
+    <imageLink>http://www.tailspintoys.com/images?id=123abc</imageLink>
+    <shipping>
+        <country>US</country>
+        <price>
+            <currency>USD</currency>
+            <value>3</value>
+        </price>
+        <service>Ground</service>
+        <region>CA</region>
+    </shipping>
+    <sizes>2T</sizes>
+    <sizes>3T</sizes>
+    <shippingWeight>
+        <unit>oz</unit>
+        <value>1.3</value>
+    </shippingWeight>
+    <price>
+        <currency>USD</currency>
+        <value>38</value>
+    </price>
+    <id>Online:en:US:sku1234</id>
+    <brand>Tailspin</brand>
+    <productType>Apparel &amp; Accessories &gt; Clothing &gt; Dresses</productType>
+    <expirationDate>2016-07-14T07:27:06-08:00</expirationDate>
+    <sizeType>regular</sizeType>
+    <salePrice>
+        <currency>USD</currency>
+        <value>25</value>
+    </salePrice>
+    <sizeSystem>US</sizeSystem>
+    <kind>content#product</kind>
+    <shippingLabel>promotion</shippingLabel>
+    <ageGroup>kids</ageGroup>
+    <targetCountry>US</targetCountry>
+    <condition>new</condition>
+    <adwordsRedirect>http://contoso.com/hury</adwordsRedirect>
+    <material>cotton</material>
+    <contentLanguage>en</contentLanguage>
+    <offerId>sku1234</offerId>
+    <identifierExists>True</identifierExists>
+    <adult>False</adult>
+</xml-item>
