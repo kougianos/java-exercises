@@ -2,6 +2,7 @@ package com.javaexercices.kougianos.util;
 
 import java.util.*;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MathUtils {
 
@@ -87,12 +88,15 @@ public class MathUtils {
 
     /**
      * Private method that checks whether a given number is prime or not, using lambda expression.
+     * The function is optimized to look only until number's square root, and skips numbers that are multiples of 2.
      * @param number int
      * @return boolean
      */
     public static boolean isPrime(int number) {
-        return IntStream.rangeClosed(2, (int) (Math.sqrt(number)))
-                .allMatch(n -> number % n != 0);
+        return Stream.concat(Stream.of(2), IntStream.rangeClosed(2, (int) (Math.sqrt(number)))
+                .filter(e -> e % 2 != 0)
+                .boxed())
+                .noneMatch(n -> number % n == 0);
     }
 
 }
