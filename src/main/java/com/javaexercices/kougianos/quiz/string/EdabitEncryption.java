@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class EdabitEncryption {
 
-    private EdabitEncryption(){
+    private EdabitEncryption() {
 
     }
 
@@ -22,7 +22,7 @@ public class EdabitEncryption {
         String[] grid = splitAfterNChars(s, columns);
         List<String> matrix = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        int j=0;
+        int j = 0;
 
         while (true) {
             for (String value : grid) {
@@ -32,7 +32,7 @@ public class EdabitEncryption {
                 }
             }
             matrix.add(String.valueOf(sb));
-            if(j==rows) {
+            if (j == rows) {
                 break;
             }
             sb.setLength(0);

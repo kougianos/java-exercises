@@ -9,7 +9,7 @@ package com.javaexercices.kougianos.quiz.string;
  */
 public class FindMissingLetter {
 
-    private FindMissingLetter(){
+    private FindMissingLetter() {
 
     }
 

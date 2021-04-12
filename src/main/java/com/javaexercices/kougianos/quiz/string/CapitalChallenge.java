@@ -14,7 +14,7 @@ package com.javaexercices.kougianos.quiz.string;
  */
 public class CapitalChallenge {
 
-    private CapitalChallenge(){
+    private CapitalChallenge() {
 
     }
 
@@ -23,7 +23,7 @@ public class CapitalChallenge {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s2.length(); i++) {
             try {
-                if(Character.isUpperCase(s2.charAt(i))) {
+                if (Character.isUpperCase(s2.charAt(i))) {
                     sb.append(s1.charAt(i));
                 }
             } catch (IndexOutOfBoundsException e) {
@@ -32,7 +32,7 @@ public class CapitalChallenge {
         }
         for (int i = 0; i < s1.length(); i++) {
             try {
-                if(Character.isUpperCase(s1.charAt(i))) {
+                if (Character.isUpperCase(s1.charAt(i))) {
                     sb.append(s2.charAt(i));
                 }
             } catch (IndexOutOfBoundsException e) {

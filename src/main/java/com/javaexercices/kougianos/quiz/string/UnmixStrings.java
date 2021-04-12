@@ -17,9 +17,9 @@ public class UnmixStrings {
 
     public static String unmix(String str) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < str.length(); i+=2) {
+        for (int i = 0; i < str.length(); i += 2) {
 
-            if (i == str.length() - 1 ) {
+            if (i == str.length() - 1) {
                 sb.append(str.charAt(i));
                 break;
             }

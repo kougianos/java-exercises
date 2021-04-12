@@ -89,6 +89,7 @@ public class MathUtils {
     /**
      * Private method that checks whether a given number is prime or not, using lambda expression.
      * The function is optimized to look only until number's square root, and skips numbers that are multiples of 2.
+     *
      * @param number int
      * @return boolean
      */

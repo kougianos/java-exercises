@@ -9,7 +9,7 @@ package com.javaexercices.kougianos.quiz.number;
  */
 public class AlternateSigner {
 
-    private AlternateSigner(){
+    private AlternateSigner() {
 
     }
 

@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class IpValidator {
 
-    private IpValidator(){
+    private IpValidator() {
 
     }
 

@@ -10,7 +10,7 @@ package com.javaexercices.kougianos.quiz.number;
  */
 public class Brick {
 
-    private Brick(){
+    private Brick() {
 
     }
 
