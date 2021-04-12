@@ -52,18 +52,19 @@ public class CollectionUtils {
     }
 
     /**
-     * Returns the element with the minimum value in a list of numbers.
-     * Supported classes:
+     * Returns the element with the minimum/maximum value in a list of numbers.
+     * Supported classes inside List:
      * java.lang.Integer
      * java.lang.Double
      * java.lang.Float
      *
      * @param numberList input list of numbers
-     * @return Number minimum number
+     * @param minFlag    when true, return minimum number. Otherwise, return maximum.
+     * @return Number minimum/maximum number
      * @throws IllegalArgumentException if numberList is empty, or if input class is unsupported.
-     * @throws ClassCastException if numberList contains elements that are not the same type.
+     * @throws ClassCastException       if numberList contains elements that are not the same type.
      */
-    public static Number calculateMinNumberInList(List<?> numberList) {
+    public static Number calculateMinOrMaxNumberInList(List<?> numberList, boolean minFlag) {
 
         if (numberList.isEmpty()) {
             throw new IllegalArgumentException("Input list is empty.");
@@ -72,11 +73,14 @@ public class CollectionUtils {
         try {
             switch (c) {
                 case "java.lang.Integer":
-                    return numberList.stream().mapToInt(e -> (int) e).min().getAsInt();
+                    return minFlag ? numberList.stream().mapToInt(e -> (int) e).min().getAsInt() :
+                            numberList.stream().mapToInt(e -> (int) e).max().getAsInt();
                 case "java.lang.Double":
-                    return numberList.stream().mapToDouble(e -> (double) e).min().getAsDouble();
+                    return minFlag ? numberList.stream().mapToDouble(e -> (double) e).min().getAsDouble() :
+                            numberList.stream().mapToDouble(e -> (double) e).max().getAsDouble();
                 case "java.lang.Float":
-                    return (float) numberList.stream().mapToDouble(e -> (float) e).min().getAsDouble();
+                    return minFlag ? (float) numberList.stream().mapToDouble(e -> (float) e).min().getAsDouble() :
+                            (float) numberList.stream().mapToDouble(e -> (float) e).max().getAsDouble();
                 default:
                     throw new IllegalArgumentException("Method supports only Integer, Double, and Float classes");
             }

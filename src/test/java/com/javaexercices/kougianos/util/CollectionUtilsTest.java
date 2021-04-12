@@ -31,23 +31,24 @@ class CollectionUtilsTest {
     @Test
     void testCalculateMinNumberInList() {
         var input1 = Arrays.asList(1, 2, 3, 4, 5, 6, -873, 0);
-        assertEquals(-873, CollectionUtils.calculateMinNumberInList(input1));
+        assertEquals(-873, CollectionUtils.calculateMinOrMaxNumberInList(input1,true));
 
         var input2 = Arrays.asList(1.63, 2.1, 3.6, 4.3, 5.8, 6.2, -8873.0, 0.123);
-        assertEquals(-8873.0, CollectionUtils.calculateMinNumberInList(input2));
+        assertEquals(-8873.0, CollectionUtils.calculateMinOrMaxNumberInList(input2,true));
 
         var input3 = Arrays.asList(5.34f, 2.56f, -0.129f);
-        assertEquals(-0.129f, CollectionUtils.calculateMinNumberInList(input3));
+        assertEquals(-0.129f, CollectionUtils.calculateMinOrMaxNumberInList(input3,true));
+        assertEquals(5.34f, CollectionUtils.calculateMinOrMaxNumberInList(input3,false));
 
         var input4 = Arrays.asList("String1", "String2");
-        assertThrows(IllegalArgumentException.class, () -> CollectionUtils.calculateMinNumberInList(input4));
+        assertThrows(IllegalArgumentException.class, () -> CollectionUtils.calculateMinOrMaxNumberInList(input4,true));
 
         var input5 = new ArrayList<>();
-        assertThrows(IllegalArgumentException.class, () -> CollectionUtils.calculateMinNumberInList(input5));
+        assertThrows(IllegalArgumentException.class, () -> CollectionUtils.calculateMinOrMaxNumberInList(input5,false));
 
         var input6 = new ArrayList<>();
         input6.add(5);
         input6.add(5.05);
-        assertThrows(ClassCastException.class, () -> CollectionUtils.calculateMinNumberInList(input6));
+        assertThrows(ClassCastException.class, () -> CollectionUtils.calculateMinOrMaxNumberInList(input6,false));
     }
 }
