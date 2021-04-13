@@ -11,22 +11,16 @@ public class MathUtils {
     }
 
     /**
-     * Find all factors of a given number and return them in a Set (better performance) or List, in ascending order.
+     * Find all factors of a given number and return them in a Set or List (in ascending order).
      * Use the function with returnListFlag true for List returned.
      *
-     * @param num            int
-     * @param returnListFlag boolean
+     * @param num            int        Input number.
+     * @param returnListFlag boolean    When true, return list instead of set.
      * @return Collection<Integer>
      */
     public static Collection<Integer> findFactors(int num, boolean returnListFlag) {
 
-        Collection<Integer> factors;
-
-        if (returnListFlag) {
-            factors = new ArrayList<>();
-        } else {
-            factors = new HashSet<>();
-        }
+        Collection<Integer> factors = returnListFlag ? new ArrayList<>() : new HashSet<>();
 
         // Skip two if the number is odd
         int incrementer = num % 2 == 0 ? 1 : 2;
@@ -87,7 +81,8 @@ public class MathUtils {
     }
 
     /**
-     * Private method that checks whether a given number is prime or not, using lambda expression.
+     * Checks whether a given number is prime or not, using lambda expression.
+     * A prime number is a number that is divisible only by itself and 1 (e.g. 2, 3, 5, 7, 11).
      * The function is optimized to look only until number's square root, and skips numbers that are multiples of 2.
      *
      * @param number int
