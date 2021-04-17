@@ -17,4 +17,12 @@ class ObjectUtilsTest {
         dog.setDob(null);
         assertTrue(ObjectUtils.doesObjectHaveNullFields(Dog.class, dog));
     }
+
+    @Test
+    void testDoesDogHaveNullFields() {
+        Dog dog = new Dog("max", 1, LocalDate.MIN);
+        assertFalse(ObjectUtils.doesDogHaveNullFields(dog));
+        dog.setDob(null);
+        assertTrue(ObjectUtils.doesDogHaveNullFields(dog));
+    }
 }
