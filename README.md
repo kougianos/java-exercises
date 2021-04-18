@@ -13,3 +13,6 @@ and contains corresponding unit tests in the test folder. <br>
 Example: <br>
 `Brick.java (challenge) -> BrickTest.java (unit tests)`
  
+### Update 19/4/2021 - repo on steroids
+This repo has been significantly enhanced, containing a complete Spring boot application, with controllers, utility classes, integration tests etc. <br>
+All quizzes are still here, under the `quiz` package.
