@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 /**
- * Configuration class for connection to a remote mongoDb
+ * Configuration class for connection to a remote mongoDb, on 2 mongo databases.
  */
 @Configuration
 @EnableMongoRepositories
