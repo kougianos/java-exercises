@@ -1,9 +1,6 @@
 package com.javaexercices.kougianos.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CollectionUtils {
@@ -89,5 +86,19 @@ public class CollectionUtils {
                     "Integer, Float, Double or other Object types.");
         }
 
+    }
+
+    /**
+     * Returns a Set consisting of all the elements of the 2 input sets.
+     * @param a first input Set
+     * @param b second input Set
+     * @param <T> Generic type
+     * @return Set<T> merged Set
+     */
+    public static <T> Set<T> mergeSets(Set<T> a, Set<T> b) {
+        Set<T> mergedSet = new HashSet<>();
+        mergedSet.addAll(a);
+        mergedSet.addAll(b);
+        return mergedSet;
     }
 }
