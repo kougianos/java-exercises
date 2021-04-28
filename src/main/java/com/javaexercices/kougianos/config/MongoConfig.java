@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 /**
- * Configuration class for connection to a remote mongoDb, on 2 mongo databases.
+ * Configuration class for connection to a remote mongoDB cluster, on 2 mongo databases.
  */
 @Configuration
 @EnableMongoRepositories
@@ -45,8 +45,11 @@ public class MongoConfig {
         return new MongoTemplate(mongo(), "usersDb");
     }
 
+    /**
+     * Returns connection string for mongoDB.
+     * @return String connectionString
+     */
     private String getConnectionString() {
-
         try (
                 FileReader fr = new FileReader("src/main/resources/credentials");
                 BufferedReader br = new BufferedReader(fr)
@@ -54,9 +57,7 @@ public class MongoConfig {
             return br.readLine();
         } catch (IOException e) {
             e.printStackTrace();
+            return "";
         }
-
-        return "";
-
     }
 }
