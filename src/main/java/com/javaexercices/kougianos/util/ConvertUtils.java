@@ -27,7 +27,7 @@ public class ConvertUtils {
      */
     public static String jsonToXmlString(String json) {
         JSONObject jsonObject = new JSONObject(json);
-        return XML.toString(jsonObject, "xml-item");
+        return XML.toString(jsonObject, "xml-root-node");
     }
 
 }
