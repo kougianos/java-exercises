@@ -1,4 +1,4 @@
-<xml-item>
+<xml-root-node>
     <additionalImageLinks>http://www.tailspintoys.com/images?id=123def</additionalImageLinks>
     <additionalImageLinks>http://www.tailspintoys.com/images?id=567def</additionalImageLinks>
     <color>Blue</color>
@@ -58,4 +58,4 @@
     <offerId>sku1234</offerId>
     <identifierExists>True</identifierExists>
     <adult>False</adult>
-</xml-item>
+</xml-root-node>
