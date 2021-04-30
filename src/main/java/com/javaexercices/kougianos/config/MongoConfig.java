@@ -10,9 +10,12 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+import javax.net.ssl.SSLContext;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -22,13 +25,23 @@ import java.io.IOException;
 @EnableMongoRepositories
 public class MongoConfig {
 
-    private final String connectionStringUrl = getConnectionString();
+    private static final String CONNECTION_STRING_URL = getConnectionString();
+    private static final String TEST_DB = "testDb";
+    private static final String USERS_DB = "usersDb";
 
     @Bean
-    public MongoClient mongo() {
-        ConnectionString connectionString = new ConnectionString(this.connectionStringUrl);
+    public MongoClient mongo() throws NoSuchAlgorithmException, KeyManagementException {
+        ConnectionString connectionString = new ConnectionString(CONNECTION_STRING_URL);
+        // Java 11 TLSv1.3 Bug with MongoDB Atlas
+        // https://developer.mongodb.com/community/forums/t/sslhandshakeexception-should-not-be-presented-in-certificate-request/12493
+        SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+        sslContext.init(null, null, null);
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
+                .applyToSslSettings(builder -> {
+                    builder.enabled(true);
+                    builder.context(sslContext);
+                })
                 .build();
 
         return MongoClients.create(mongoClientSettings);
@@ -36,20 +49,21 @@ public class MongoConfig {
 
     @Bean(name = "Test")
     @Primary
-    public MongoTemplate mongoTemplateTest() {
-        return new MongoTemplate(mongo(), "testDb");
+    public MongoTemplate mongoTemplateTest() throws NoSuchAlgorithmException, KeyManagementException {
+        return new MongoTemplate(mongo(), TEST_DB);
     }
 
     @Bean(name = "Users")
-    public MongoTemplate mongoTemplateUsers() {
-        return new MongoTemplate(mongo(), "usersDb");
+    public MongoTemplate mongoTemplateUsers() throws NoSuchAlgorithmException, KeyManagementException {
+        return new MongoTemplate(mongo(), USERS_DB);
     }
 
     /**
      * Returns connection string for mongoDB.
+     *
      * @return String connectionString
      */
-    private String getConnectionString() {
+    private static String getConnectionString() {
         try (
                 FileReader fr = new FileReader("src/main/resources/credentials");
                 BufferedReader br = new BufferedReader(fr)
