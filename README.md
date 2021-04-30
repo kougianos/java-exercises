@@ -17,3 +17,15 @@ Example: <br>
 
 This repo has been significantly enhanced, containing a complete Spring boot application, with controllers, utility classes, integration tests etc. <br>
 All quizzes are still here, under the `quiz` package.
+
+##### MongoDB Atlas Integration
+The repo contains a MongoService that integrates with a MongoDB in Atlas. In order to successfully connect, a VM option has to be added: <br>
+`-Djdk.tls.client.protocols=TLSv1.2` <br>
+For more info read <a href="https://developer.mongodb.com/community/forums/t/sslhandshakeexception-should-not-be-presented-in-certificate-request/12493">here</a>
+
+##### Run tests from terminal
+* Run **unit tests** only <br>
+  `mvn test`
+* Run **all tests** (unit & integration) <br>
+  `mvn verify -Djdk.tls.client.protocols=TLSv1.2`
+  
