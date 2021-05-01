@@ -29,11 +29,18 @@ public class MongoConfig {
     private static final String TEST_DB = "testDb";
     private static final String USERS_DB = "usersDb";
 
+    /**
+     * MongoClient bean that uses connection string taken from file, and SSL Context TLSv1.2 to avoid bug of
+     * Java 11 with MongoDB Atlas integration (SSL Handshake exception). For more information see
+     * https://developer.mongodb.com/community/forums/t/sslhandshakeexception-should-not-be-presented-in-certificate-request/12493
+     *
+     * @return MongoClient
+     * @throws NoSuchAlgorithmException Exception
+     * @throws KeyManagementException   Exception
+     */
     @Bean
     public MongoClient mongo() throws NoSuchAlgorithmException, KeyManagementException {
         ConnectionString connectionString = new ConnectionString(CONNECTION_STRING_URL);
-        // Java 11 TLSv1.3 Bug with MongoDB Atlas
-        // https://developer.mongodb.com/community/forums/t/sslhandshakeexception-should-not-be-presented-in-certificate-request/12493
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
         sslContext.init(null, null, null);
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
@@ -47,12 +54,26 @@ public class MongoConfig {
         return MongoClients.create(mongoClientSettings);
     }
 
+    /**
+     * Bean mongoTemplate that connects to "Test" database of MongoDB Atlas.
+     *
+     * @return MongoTemplate
+     * @throws NoSuchAlgorithmException Exception
+     * @throws KeyManagementException   Exception
+     */
     @Bean(name = "Test")
     @Primary
     public MongoTemplate mongoTemplateTest() throws NoSuchAlgorithmException, KeyManagementException {
         return new MongoTemplate(mongo(), TEST_DB);
     }
 
+    /**
+     * Bean mongoTemplate that connects to "Users" database of MongoDB Atlas.
+     *
+     * @return MongoTemplate
+     * @throws NoSuchAlgorithmException Exception
+     * @throws KeyManagementException   Exception
+     */
     @Bean(name = "Users")
     public MongoTemplate mongoTemplateUsers() throws NoSuchAlgorithmException, KeyManagementException {
         return new MongoTemplate(mongo(), USERS_DB);
