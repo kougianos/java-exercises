@@ -5,8 +5,10 @@
 
     <groupId>com.javaexercices</groupId>
     <artifactId>kougianos</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>kougianos</name>
+    <version>2.0-SNAPSHOT</version>
+
+    <name>kougianos-spring</name>
+    <url>https://github.com/kougianos/java-exercises</url>
     <description>Generic Spring Boot application that contains quizzes, util classes, converters and much more.
     </description>
 
