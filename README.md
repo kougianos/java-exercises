@@ -13,8 +13,7 @@ and contains corresponding unit tests in the test folder. <br>
 Example: <br>
 `Brick.java (challenge) -> BrickTest.java (unit tests)`
  
-### Update 19/4/2021 - repo on steroids 🔴 
-
+### Update 19/4/2021 - repo on steroids 🔴
 This repo has been significantly enhanced, containing a complete Spring boot application, with controllers, utility classes, integration tests etc. <br>
 All quizzes are still here, under the `quiz` package.
 
@@ -24,3 +23,9 @@ All quizzes are still here, under the `quiz` package.
 * Run **all tests** (unit & integration) <br>
   `mvn verify`
   
+##### Integration points
+The application connects with the 2 following **cloud** databases:
+* MongoDB cluster hosted on MongoDB Atlas (See more at https://cloud.mongodb.com/)
+* MySQL database hosted on GearHost (See more at https://www.gearhost.com/)
+
+The sensitive information (hostnames and credentials) have been kept private for obvious reasons.
