@@ -14,10 +14,10 @@ import java.time.LocalDate;
 public class Dog {
     @Id
     Long id;
-    @Column(value = "NAME")
+    @Column(value = "name")
     private String name;
-    @Column(value = "AGE")
+    @Column(value = "age")
     private Integer ageInYears;
-    @Column(value = "DOB")
+    @Column(value = "dob")
     private LocalDate dob;
 }
