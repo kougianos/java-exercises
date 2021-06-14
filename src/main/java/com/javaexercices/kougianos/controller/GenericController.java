@@ -39,6 +39,7 @@ public class GenericController {
         return ConvertUtils.jsonToXmlString(jsonString);
     }
 
+    // test url GET http://localhost:8080/test/getMongoCollections
     @GetMapping(path = "/test/getMongoCollections", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody
@@ -46,15 +47,16 @@ public class GenericController {
         return mongoService.getAllMongoCollections();
     }
 
+    // test url GET http://localhost:8080/test/getBankDetails?code=46062817
     @GetMapping(path = "/test/getBankDetails", produces = "application/xml")
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody
     DetailsType getBankDetails(@RequestParam String code) {
         ObjectFactory objectFactory = new ObjectFactory();
         GetBankType type = new GetBankType();
-        type.setBlz("46062817");
+        type.setBlz(code);
         GetBankResponseType response = soapClient.getBank("http://www.thomas-bayer.com/axis2/services/BLZService", objectFactory.createGetBank(type));
-        return new DetailsType();
+        return response.getDetails();
     }
 
 }
