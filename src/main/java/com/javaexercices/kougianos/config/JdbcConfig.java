@@ -10,7 +10,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableJdbcRepositories()
@@ -34,6 +37,16 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
         dataSource.setUsername("ghtestdb");
         dataSource.setPassword("Bn0k2Q8!DtU?");
         return dataSource;
+    }
+
+    @PostConstruct
+    void test() {
+        String sql = "SELECT COUNT(*) FROM dogs";
+        var x = operations().queryForObject(sql, new HashMap<>(), Integer.class);
+        String sql1 = "DROP TABLE DOGS";
+
+        x = operations().update(sql1, new HashMap<>());
+
     }
 
 }

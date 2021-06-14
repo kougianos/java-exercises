@@ -1,6 +1,5 @@
 package com.javaexercices.kougianos.controller;
 
-import com.javaexercices.kougianos.service.MongoService;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -12,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GenericControllerTest {
 
-    private final GenericController genericController = new GenericController(new MongoService());
+    private final GenericController genericController = new GenericController();
 
     @Test
     void testXmlToJson() throws FileNotFoundException {
