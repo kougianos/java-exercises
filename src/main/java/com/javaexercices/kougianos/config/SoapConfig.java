@@ -17,7 +17,6 @@ public class SoapConfig {
     @Bean
     public SoapClient soapConnector(Jaxb2Marshaller marshaller) {
         SoapClient client = new SoapClient();
-        client.setDefaultUri("http://www.thomas-bayer.com/axis2/services/BLZService");
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;

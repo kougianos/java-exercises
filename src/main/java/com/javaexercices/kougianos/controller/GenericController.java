@@ -9,6 +9,7 @@ import com.javaexercices.kougianos.service.SoapClient;
 import com.javaexercices.kougianos.util.ConvertUtils;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,10 @@ import java.util.Set;
 @RequestMapping(path = "")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 @NoArgsConstructor(force = true)
+@Slf4j
 public class GenericController {
 
     private final MongoService mongoService;
-    @Autowired
     private final SoapClient soapClient;
 
     @PostMapping(path = "/convert/XmlToJson", consumes = "application/xml", produces = "application/json")
@@ -47,15 +48,16 @@ public class GenericController {
         return mongoService.getAllMongoCollections();
     }
 
-    // test url GET http://localhost:8080/test/getBankDetails?code=46062817
+    // test url GET http://localhost:8080/test/getBankDetails?code=46062817 or 10000000
     @GetMapping(path = "/test/getBankDetails", produces = "application/xml")
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody
     DetailsType getBankDetails(@RequestParam String code) {
+        log.info("getBankDetails for code {}", code);
         ObjectFactory objectFactory = new ObjectFactory();
         GetBankType type = new GetBankType();
         type.setBlz(code);
-        GetBankResponseType response = soapClient.getBank("http://www.thomas-bayer.com/axis2/services/BLZService", objectFactory.createGetBank(type));
+        GetBankResponseType response = soapClient.getBank(objectFactory.createGetBank(type));
         return response.getDetails();
     }
 
