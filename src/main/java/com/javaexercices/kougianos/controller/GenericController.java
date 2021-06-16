@@ -48,7 +48,8 @@ public class GenericController {
         return mongoService.getAllMongoCollections();
     }
 
-    // test url GET http://localhost:8080/test/getBankDetails?code=46062817 or 10000000
+    // test url GET http://localhost:8080/test/getBankDetails?code=46062817
+    // example codes 46062817 21830035 87069077 35090300
     @GetMapping(path = "/test/getBankDetails", produces = "application/xml")
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody
@@ -60,5 +61,4 @@ public class GenericController {
         GetBankResponseType response = soapClient.getBank(objectFactory.createGetBank(type));
         return response.getDetails();
     }
-
 }
