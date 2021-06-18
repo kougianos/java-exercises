@@ -5,7 +5,7 @@ import com.javaexercices.kougianos.dto.soap.GetBankResponseType;
 import com.javaexercices.kougianos.dto.soap.GetBankType;
 import com.javaexercices.kougianos.dto.soap.ObjectFactory;
 import com.javaexercices.kougianos.service.MongoService;
-import com.javaexercices.kougianos.service.SoapClient;
+import com.javaexercices.kougianos.service.BankService;
 import com.javaexercices.kougianos.util.ConvertUtils;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.Set;
 public class GenericController {
 
     private final MongoService mongoService;
-    private final SoapClient soapClient;
+    private final BankService bankService;
 
     @PostMapping(path = "/convert/XmlToJson", consumes = "application/xml", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
@@ -58,7 +58,7 @@ public class GenericController {
         ObjectFactory objectFactory = new ObjectFactory();
         GetBankType type = new GetBankType();
         type.setBlz(code);
-        GetBankResponseType response = soapClient.getBank(objectFactory.createGetBank(type));
+        GetBankResponseType response = bankService.getBank(objectFactory.createGetBank(type));
         return response.getDetails();
     }
 }

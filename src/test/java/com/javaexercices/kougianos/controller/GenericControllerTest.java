@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GenericControllerTest {
 
+    // TODO add mockito and write unit tests for all controller methods
     private final GenericController genericController = new GenericController();
 
     @Test

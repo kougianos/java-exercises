@@ -6,7 +6,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import javax.xml.bind.JAXBElement;
 
-public class SoapClient extends WebServiceGatewaySupport {
+public class BankService extends WebServiceGatewaySupport {
 
     public static final String BANK_URI = "http://www.thomas-bayer.com/axis2/services/BLZService";
 
