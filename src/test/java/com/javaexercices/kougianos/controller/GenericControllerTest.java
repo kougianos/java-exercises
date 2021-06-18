@@ -1,17 +1,34 @@
 package com.javaexercices.kougianos.controller;
 
+import com.javaexercices.kougianos.service.BankService;
+import com.javaexercices.kougianos.service.MongoService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(SpringExtension.class)
 class GenericControllerTest {
 
-    // TODO add mockito and write unit tests for all controller methods
+    // TODO fix
+
+    @Mock
+    private MongoService mongoService;
+    @Mock
+    private BankService bankService;
+    @InjectMocks
     private final GenericController genericController = new GenericController();
 
     @Test
@@ -37,6 +54,14 @@ class GenericControllerTest {
         reader = new BufferedReader(new FileReader("src/test/resources/jsonToXmlResponse.xml"));
         String xmlResponse = reader.lines().collect(Collectors.joining("\n")).replaceAll("\\s", "");
         assertEquals(xmlResponse, actualResponse);
+
+    }
+
+    @Test
+    void testMongo() {
+        when(mongoService.getAllMongoCollections()).thenReturn(Set.of("Collection1", "Collection2"));
+
+        var response = genericController.getAllMongoCollections();
 
     }
 
