@@ -27,5 +27,3 @@ All quizzes are still here, under the `quiz` package.
 The application connects with the 2 following **cloud** databases:
 * MongoDB cluster hosted on MongoDB Atlas (See more at https://cloud.mongodb.com/)
 * MySQL database hosted on GearHost (See more at https://www.gearhost.com/)
-
-The sensitive information (hostnames and credentials) have been kept private using `.gitignore` for obvious reasons.
