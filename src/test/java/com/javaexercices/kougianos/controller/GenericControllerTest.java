@@ -1,12 +1,14 @@
 package com.javaexercices.kougianos.controller;
 
+import com.javaexercices.kougianos.dto.soap.DetailsType;
+import com.javaexercices.kougianos.dto.soap.GetBankResponseType;
 import com.javaexercices.kougianos.service.BankService;
 import com.javaexercices.kougianos.service.MongoService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,19 +17,23 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class GenericControllerTest {
-
-    // TODO fix mockito NullPointer Exception
 
     @Mock
     private MongoService mongoService;
     @Mock
     private BankService bankService;
-    @InjectMocks
-    private final GenericController genericController = new GenericController();
+    private GenericController genericController;
+
+    @BeforeEach
+    // Used that way instead of InjectMocks, to clearly inject final fields
+    void setUp() {
+        genericController = new GenericController(mongoService, bankService);
+    }
 
     @Test
     void testXmlToJson() throws FileNotFoundException {
@@ -58,9 +64,19 @@ class GenericControllerTest {
     @Test
     void testMongo() {
         when(mongoService.getAllMongoCollections()).thenReturn(Set.of("Collection1", "Collection2"));
-
         var response = genericController.getAllMongoCollections();
+        assertEquals(2, response.size());
+    }
 
+    @Test
+    void testBankService() {
+        DetailsType dt = new DetailsType();
+        dt.setPlz("Test");
+        GetBankResponseType getBankResponseType = new GetBankResponseType();
+        getBankResponseType.setDetails(dt);
+        when(bankService.getBank(any())).thenReturn(getBankResponseType);
+        var response = genericController.getBankDetails("test");
+        assertEquals("Test", response.getPlz());
     }
 
 }

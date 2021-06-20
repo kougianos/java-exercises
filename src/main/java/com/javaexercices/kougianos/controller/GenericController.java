@@ -19,7 +19,6 @@ import java.util.Set;
 @RestController
 @RequestMapping(path = "")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-@NoArgsConstructor(force = true)
 @Slf4j
 public class GenericController {
 
