@@ -29,8 +29,8 @@ class GenericControllerTest {
     private BankService bankService;
     private GenericController genericController;
 
-    @BeforeEach
     // Used that way instead of InjectMocks, to clearly inject final fields
+    @BeforeEach
     void setUp() {
         genericController = new GenericController(mongoService, bankService);
     }
