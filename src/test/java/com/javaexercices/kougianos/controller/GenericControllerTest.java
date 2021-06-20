@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.BufferedReader;
@@ -22,7 +20,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 class GenericControllerTest {
 
-    // TODO fix
+    // TODO fix mockito NullPointer Exception
 
     @Mock
     private MongoService mongoService;
