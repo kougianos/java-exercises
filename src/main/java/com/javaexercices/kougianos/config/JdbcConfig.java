@@ -29,6 +29,7 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
         return new DataSourceTransactionManager(dataSource());
     }
 
+    // TODO move credentials to properties file
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -39,14 +40,18 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
         return dataSource;
     }
 
+    /**
+     * Used for performing some initial test SQL queries on the database.
+     */
     @PostConstruct
     void test() {
+
         String sql = "SELECT COUNT(*) FROM dogs";
         var x = operations().queryForObject(sql, new HashMap<>(), Integer.class);
+        /*
         String sql1 = "DROP TABLE DOGS";
-
         x = operations().update(sql1, new HashMap<>());
-
+        */
     }
 
 }

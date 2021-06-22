@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 @EnableMongoRepositories
 public class MongoConfig {
 
+    // TODO move credentials to properties file
     private static final String CONNECTION_STRING_URL = getConnectionString();
     private static final String TEST_DB = "testDb";
     private static final String USERS_DB = "usersDb";
