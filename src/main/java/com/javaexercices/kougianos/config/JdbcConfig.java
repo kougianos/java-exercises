@@ -1,5 +1,6 @@
 package com.javaexercices.kougianos.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
@@ -18,6 +19,11 @@ import java.util.Map;
 @Configuration
 @EnableJdbcRepositories()
 public class JdbcConfig extends AbstractJdbcConfiguration {
+
+    @Value("${gearhost.username}")
+    private String username;
+    @Value("${gearhost.password}")
+    private String password;
     // NamedParameterJdbcOperations is used internally to submit SQL statements to the database
     @Bean
     public NamedParameterJdbcOperations operations() {
@@ -29,14 +35,13 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
         return new DataSourceTransactionManager(dataSource());
     }
 
-    // TODO move credentials to properties file
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://den1.mysql5.gear.host/ghtestdb");
-        dataSource.setUsername("ghtestdb");
-        dataSource.setPassword("Bn0k2Q8!DtU?");
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
         return dataSource;
     }
 
