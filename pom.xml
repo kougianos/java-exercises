@@ -182,8 +182,8 @@
                 </executions>
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>com.javaexercices.kougianos.dto.soap</generatePackage>
-                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                    <generatePackage>com.javaexercices.kougianos.dto.bank</generatePackage>
+                    <!--<generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
                     <schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
                     <schemaIncludes>
                         <include>*.wsdl</include>

@@ -1,7 +1,7 @@
 package com.javaexercices.kougianos.controller;
 
-import com.javaexercices.kougianos.dto.soap.DetailsType;
-import com.javaexercices.kougianos.dto.soap.GetBankResponseType;
+import com.javaexercices.kougianos.dto.bank.DetailsType;
+import com.javaexercices.kougianos.dto.bank.GetBankResponseType;
 import com.javaexercices.kougianos.service.BankService;
 import com.javaexercices.kougianos.service.MongoService;
 import org.junit.jupiter.api.BeforeEach;

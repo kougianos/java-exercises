@@ -1,9 +1,9 @@
 package com.javaexercices.kougianos.controller;
 
-import com.javaexercices.kougianos.dto.soap.DetailsType;
-import com.javaexercices.kougianos.dto.soap.GetBankResponseType;
-import com.javaexercices.kougianos.dto.soap.GetBankType;
-import com.javaexercices.kougianos.dto.soap.ObjectFactory;
+import com.javaexercices.kougianos.dto.bank.DetailsType;
+import com.javaexercices.kougianos.dto.bank.GetBankResponseType;
+import com.javaexercices.kougianos.dto.bank.GetBankType;
+import com.javaexercices.kougianos.dto.bank.ObjectFactory;
 import com.javaexercices.kougianos.service.BankService;
 import com.javaexercices.kougianos.service.MongoService;
 import com.javaexercices.kougianos.util.ConvertUtils;

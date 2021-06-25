@@ -1,7 +1,7 @@
 package com.javaexercices.kougianos.service;
 
-import com.javaexercices.kougianos.dto.soap.GetBankResponseType;
-import com.javaexercices.kougianos.dto.soap.GetBankType;
+import com.javaexercices.kougianos.dto.bank.GetBankResponseType;
+import com.javaexercices.kougianos.dto.bank.GetBankType;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import javax.xml.bind.JAXBElement;
