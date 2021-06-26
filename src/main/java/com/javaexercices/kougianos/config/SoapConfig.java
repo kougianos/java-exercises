@@ -13,7 +13,7 @@ public class SoapConfig {
     @Bean(name = "bankMarshaller")
     public Jaxb2Marshaller bankMarshaller()  {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("com.javaexercices.kougianos.dto.soap");
+        marshaller.setContextPath("com.javaexercices.kougianos.dto.bank");
         return marshaller;
     }
     @Bean

@@ -7,22 +7,32 @@ import com.javaexercices.kougianos.dto.bank.ObjectFactory;
 import com.javaexercices.kougianos.service.BankService;
 import com.javaexercices.kougianos.service.MongoService;
 import com.javaexercices.kougianos.util.ConvertUtils;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Set;
 
 @RestController
 @RequestMapping(path = "")
-@AllArgsConstructor(onConstructor = @__(@Autowired))
 @Slf4j
 public class GenericController {
 
     private final MongoService mongoService;
     private final BankService bankService;
+    @Qualifier("injectedApplicationProperties")
+    private final Map<String, Object> injectedApplicationProperties; //TODO Fix, move Map into custom dto
+
+    @Autowired
+    public GenericController(MongoService mongoService, BankService bankService,
+                             Map<String, Object> injectedApplicationProperties) {
+        this.mongoService = mongoService;
+        this.bankService = bankService;
+        this.injectedApplicationProperties = injectedApplicationProperties;
+    }
 
     @PostMapping(path = "/convert/XmlToJson", consumes = "application/xml", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
