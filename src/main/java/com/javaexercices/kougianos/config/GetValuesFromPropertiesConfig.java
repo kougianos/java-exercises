@@ -1,13 +1,12 @@
 package com.javaexercices.kougianos.config;
 
+import com.javaexercices.kougianos.dto.PropertiesDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Configuration
 public class GetValuesFromPropertiesConfig {
@@ -26,16 +25,17 @@ public class GetValuesFromPropertiesConfig {
     @Value("${test.boolean}")
     private boolean testBoolean;
 
-    @Bean(name = "injectedApplicationProperties")
+    @Bean(name = "propertiesDto")
     @Primary
-    public Map<String, Object> injectedApplicationProperties() {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("String", testString);
-        map.put("Number", testNumber);
-        map.put("Array", testStringArray);
-        map.put("ListSplit", testStringListSplit);
-        map.put("List", testStringList);
-        map.put("Boolean", testBoolean);
-        return map;
+    public PropertiesDto propertiesDto() {
+        return new PropertiesDto(testString, testNumber, testStringArray,
+                testStringListSplit, testStringList, testBoolean);
+    }
+
+    @Bean(name = "propertiesDtoCustom")
+    public PropertiesDto propertiesDtoCustom() {
+        PropertiesDto propertiesDto = new PropertiesDto();
+        propertiesDto.setTestString("TEST");
+        return propertiesDto;
     }
 }

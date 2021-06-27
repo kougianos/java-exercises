@@ -1,5 +1,6 @@
 package com.javaexercices.kougianos.controller;
 
+import com.javaexercices.kougianos.dto.PropertiesDto;
 import com.javaexercices.kougianos.dto.bank.DetailsType;
 import com.javaexercices.kougianos.dto.bank.GetBankResponseType;
 import com.javaexercices.kougianos.dto.bank.GetBankType;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -23,15 +23,18 @@ public class GenericController {
 
     private final MongoService mongoService;
     private final BankService bankService;
-    @Qualifier("injectedApplicationProperties")
-    private final Map<String, Object> injectedApplicationProperties; //TODO Fix, move Map into custom dto
+    private final PropertiesDto propertiesDto;
+    private final PropertiesDto propertiesDtoCustom;
+    //TODO make connecting to mongo and sql configurable
 
     @Autowired
     public GenericController(MongoService mongoService, BankService bankService,
-                             Map<String, Object> injectedApplicationProperties) {
+                             PropertiesDto propertiesDto,
+                             @Qualifier("propertiesDtoCustom") PropertiesDto propertiesDtoCustom) {
         this.mongoService = mongoService;
         this.bankService = bankService;
-        this.injectedApplicationProperties = injectedApplicationProperties;
+        this.propertiesDto = propertiesDto;
+        this.propertiesDtoCustom = propertiesDtoCustom;
     }
 
     @PostMapping(path = "/convert/XmlToJson", consumes = "application/xml", produces = "application/json")
@@ -68,5 +71,13 @@ public class GenericController {
         type.setBlz(code);
         GetBankResponseType response = bankService.getBank(objectFactory.createGetBank(type));
         return response.getDetails();
+    }
+
+    // http://localhost:8080/test/getProperties/0
+    @GetMapping(path = "/test/getProperties/{selection}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public @ResponseBody
+    String getProperties(@PathVariable("selection") int selection) {
+        return selection == 0 ? this.propertiesDto.toString() : this.propertiesDtoCustom.toString();
     }
 }

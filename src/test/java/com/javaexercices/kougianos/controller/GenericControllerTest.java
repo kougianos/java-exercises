@@ -1,5 +1,6 @@
 package com.javaexercices.kougianos.controller;
 
+import com.javaexercices.kougianos.dto.PropertiesDto;
 import com.javaexercices.kougianos.dto.bank.DetailsType;
 import com.javaexercices.kougianos.dto.bank.GetBankResponseType;
 import com.javaexercices.kougianos.service.BankService;
@@ -13,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,13 +29,13 @@ class GenericControllerTest {
     @Mock
     private BankService bankService;
     @Mock
-    private Map<String, Object> map;
+    private PropertiesDto propertiesDto;
     private GenericController genericController;
 
     // Used that way instead of InjectMocks, to clearly inject final fields
     @BeforeEach
     void setUp() {
-        genericController = new GenericController(mongoService, bankService, map);
+        genericController = new GenericController(mongoService, bankService, propertiesDto, propertiesDto);
     }
 
     @Test
