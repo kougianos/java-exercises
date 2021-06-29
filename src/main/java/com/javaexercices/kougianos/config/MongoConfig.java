@@ -4,6 +4,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -11,9 +12,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import javax.net.ssl.SSLContext;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
@@ -25,8 +23,8 @@ import java.security.NoSuchAlgorithmException;
 @EnableMongoRepositories
 public class MongoConfig {
 
-    // TODO move credentials to properties file
-    private static final String CONNECTION_STRING_URL = getConnectionString();
+    @Value("${mongo.uri}")
+    private String connectionStringUrl;
     private static final String TEST_DB = "testDb";
     private static final String USERS_DB = "usersDb";
 
@@ -41,7 +39,7 @@ public class MongoConfig {
      */
     @Bean
     public MongoClient mongo() throws NoSuchAlgorithmException, KeyManagementException {
-        ConnectionString connectionString = new ConnectionString(CONNECTION_STRING_URL);
+        ConnectionString connectionString = new ConnectionString(connectionStringUrl);
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
         sslContext.init(null, null, null);
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
@@ -80,20 +78,4 @@ public class MongoConfig {
         return new MongoTemplate(mongo(), USERS_DB);
     }
 
-    /**
-     * Returns connection string for mongoDB.
-     *
-     * @return String connectionString
-     */
-    private static String getConnectionString() {
-        try (
-                FileReader fr = new FileReader("src/main/resources/credentials");
-                BufferedReader br = new BufferedReader(fr)
-        ) {
-            return br.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
 }
