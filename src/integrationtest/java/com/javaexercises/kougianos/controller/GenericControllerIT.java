@@ -17,7 +17,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = KougianosApplication.class)
+@SpringBootTest(
+        classes = KougianosApplication.class,
+        properties = {"mongo.enabled=true"}
+)
 @AutoConfigureMockMvc
 class GenericControllerIT {
 
@@ -51,7 +54,7 @@ class GenericControllerIT {
     /**
      * Invokes generic controller getMongoCollections endpoint, and asserts results.
      *
-     * @param mvc MockMvc object
+     * @param mvc    MockMvc object
      * @param mapper ObjectMapper
      * @throws Exception any exceptions that this test may throw.
      */

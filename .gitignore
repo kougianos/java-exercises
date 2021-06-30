@@ -11,6 +11,5 @@ logs/
 *.ipr
 
 .mvn
-src/main/resources/credentials
 src/main/java/META-INF
 src/main/java/com/javaexercices/kougianos/dto/soap/
