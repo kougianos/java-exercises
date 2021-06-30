@@ -1,6 +1,7 @@
 package com.javaexercices.kougianos.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
@@ -14,8 +15,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.HashMap;
-import java.util.Map;
 
+@ConditionalOnProperty(
+        value="sql.enabled",
+        havingValue = "true",
+        matchIfMissing = true)
 @Configuration
 @EnableJdbcRepositories()
 public class JdbcConfig extends AbstractJdbcConfiguration {
@@ -24,6 +28,8 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
     private String username;
     @Value("${gearhost.password}")
     private String password;
+    @Value("${gearhost.url}")
+    private String url;
     // NamedParameterJdbcOperations is used internally to submit SQL statements to the database
     @Bean
     public NamedParameterJdbcOperations operations() {
@@ -39,7 +45,7 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://den1.mysql5.gear.host/ghtestdb");
+        dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;

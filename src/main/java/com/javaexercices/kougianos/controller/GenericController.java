@@ -21,17 +21,24 @@ import java.util.Set;
 @Slf4j
 public class GenericController {
 
-    private final MongoService mongoService;
+    private MongoService mongoService;
     private final BankService bankService;
     private final PropertiesDto propertiesDto;
     private final PropertiesDto propertiesDtoCustom;
-    //TODO make connecting to mongo and sql configurable
 
-    @Autowired
+    @Autowired(required = false)
     public GenericController(MongoService mongoService, BankService bankService,
                              PropertiesDto propertiesDto,
                              @Qualifier("propertiesDtoCustom") PropertiesDto propertiesDtoCustom) {
         this.mongoService = mongoService;
+        this.bankService = bankService;
+        this.propertiesDto = propertiesDto;
+        this.propertiesDtoCustom = propertiesDtoCustom;
+    }
+
+    @Autowired(required = false)
+    public GenericController(BankService bankService, PropertiesDto propertiesDto,
+                             @Qualifier("propertiesDtoCustom") PropertiesDto propertiesDtoCustom) {
         this.bankService = bankService;
         this.propertiesDto = propertiesDto;
         this.propertiesDtoCustom = propertiesDtoCustom;

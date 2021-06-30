@@ -5,6 +5,7 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -19,6 +20,10 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Configuration class for connection to a remote mongoDB cluster, on 2 mongo databases.
  */
+@ConditionalOnProperty(
+        value="mongo.enabled",
+        havingValue = "true",
+        matchIfMissing = true)
 @Configuration
 @EnableMongoRepositories
 public class MongoConfig {
