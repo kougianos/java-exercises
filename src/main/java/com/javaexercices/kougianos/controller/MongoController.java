@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "")
+@RequestMapping(path = "mongo")
 @Slf4j
 public class MongoController {
     //TODO
