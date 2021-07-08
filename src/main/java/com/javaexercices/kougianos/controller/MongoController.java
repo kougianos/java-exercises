@@ -24,6 +24,7 @@ public class MongoController {
         this.mongoService = mongoService;
     }
 
+    // test url POST http://localhost:8080/mongo/users/create
     @PostMapping(path = "/users/create", consumes = "application/json", produces = "text/plain")
     @ResponseStatus(value = HttpStatus.OK)
     public String createUser(@RequestBody User user) {
