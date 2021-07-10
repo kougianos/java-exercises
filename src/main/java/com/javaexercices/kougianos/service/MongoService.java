@@ -8,10 +8,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Set;
 
 @ConditionalOnProperty(
-        value="mongo.enabled",
+        value = "mongo.enabled",
         havingValue = "true",
         matchIfMissing = true)
 @Service
@@ -27,6 +29,7 @@ public class MongoService {
 
     /**
      * Return all mongo collections for both mongo templates.
+     *
      * @return Set<String>
      */
     public Set<String> getAllMongoCollections() {
@@ -34,8 +37,15 @@ public class MongoService {
                 this.mongoTemplateUsers.getCollectionNames());
     }
 
-    //TODO
+    /**
+     * Insert a single user into Users collection.
+     *
+     * @param user User to insert
+     * @return Id of created user
+     */
     public String createUser(User user) {
+        user.setDateInserted(LocalDateTime.now(ZoneId.of("Europe/Athens")));
         return mongoTemplateUsers.insert(user).getId();
     }
+
 }

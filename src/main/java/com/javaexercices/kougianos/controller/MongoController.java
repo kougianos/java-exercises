@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(path = "mongo")
 @Slf4j
@@ -27,7 +29,7 @@ public class MongoController {
     // test url POST http://localhost:8080/mongo/users/create
     @PostMapping(path = "/users/create", consumes = "application/json", produces = "text/plain")
     @ResponseStatus(value = HttpStatus.OK)
-    public String createUser(@RequestBody User user) {
+    public String createUser(@RequestBody @Valid User user) {
         return mongoService.createUser(user);
     }
 }
