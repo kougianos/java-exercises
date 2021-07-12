@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "mongo")
@@ -31,5 +33,12 @@ public class MongoController {
     @ResponseStatus(value = HttpStatus.OK)
     public String createUser(@RequestBody @Valid User user) {
         return mongoService.createUser(user);
+    }
+
+    // test url GET http://localhost:8080/mongo/users/get?username=Nikos&age=15
+    @GetMapping(path = "/users/get", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<User> getUsers(@RequestParam Map<String,String> allParams) {
+        return mongoService.getUsers(allParams);
     }
 }

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @ConditionalOnProperty(
@@ -46,6 +49,17 @@ public class MongoService {
     public String createUser(User user) {
         user.setDateInserted(LocalDateTime.now(ZoneId.of("Europe/Athens")));
         return mongoTemplateUsers.insert(user).getId();
+    }
+
+    /**
+     * Perform find query based on params and return list of users that match query criteria.
+     *
+     * @param params HashMap of parameters
+     * @return List of users
+     */
+    public List<User> getUsers(Map<String, String> params) {
+        //TODO
+        return new ArrayList<>();
     }
 
 }
