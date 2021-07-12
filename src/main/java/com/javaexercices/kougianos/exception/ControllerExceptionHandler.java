@@ -14,6 +14,11 @@ import java.time.ZoneId;
 @Slf4j
 public class ControllerExceptionHandler {
 
+    /**
+     * Exception handler for validation of User Pojo Fields.
+     * @param ex exception
+     * @return Error
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Error> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         Error error = new Error(
@@ -22,6 +27,22 @@ public class ControllerExceptionHandler {
                 "MethodArgumentNotValidException",
                 ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         log.error("MethodArgumentNotValidException for body {}", ex.getBindingResult().getTarget());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Exception handler for illegal argument exceptions.
+     * @param ex exception
+     * @return Error
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Error> handleIllegalArgumentException(IllegalArgumentException ex) {
+        Error error = new Error(
+                HttpStatus.BAD_REQUEST.value(),
+                LocalDateTime.now(ZoneId.of("Europe/Athens")),
+                "IllegalArgumentException",
+                ex.getMessage());
+        log.error("IllegalArgumentException", ex);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 

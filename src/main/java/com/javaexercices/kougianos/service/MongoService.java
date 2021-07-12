@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -58,8 +59,29 @@ public class MongoService {
      * @return List of users
      */
     public List<User> getUsers(Map<String, String> params) {
-        //TODO
-        return new ArrayList<>();
+        Query query = createMongoQueryBasedOnParams(params);
+        return mongoTemplateUsers.find(query, User.class, "user");
+    }
+
+    /**
+     * Private method that creates a mongo query object with a map as input.
+     *
+     * @param params input Map
+     * @return Query
+     */
+    private Query createMongoQueryBasedOnParams(Map<String, String> params) {
+        Query query = new Query();
+        Criteria criteria = new Criteria();
+        params.forEach((k, v) -> {
+            //TODO make it a switch method that handles all possible values
+            if (k.equals("age")) {
+                criteria.and(k).is(Integer.valueOf(v));
+                return;
+            }
+            criteria.and(k).is(v);
+        });
+        query.addCriteria(criteria);
+        return query;
     }
 
 }
