@@ -27,9 +27,9 @@ public class User {
     private Integer age;
     private List<Dog> dogs;
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy") //used for serialization
     private LocalDate dob;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss") //used for serialization
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dateInserted;
 }
