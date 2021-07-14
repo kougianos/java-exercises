@@ -9,6 +9,9 @@ import org.springframework.util.Assert;
 
 import java.util.Properties;
 
+/**
+ * This class is created in order to be able to parse a map from a YAML file.
+ */
 public class YamlPropertySourceFactory implements PropertySourceFactory {
 
     @Override

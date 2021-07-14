@@ -10,8 +10,10 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,6 +32,8 @@ public class MongoService {
     @Autowired
     @Qualifier("Users")
     private MongoTemplate mongoTemplateUsers;
+
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Return all mongo collections for both mongo templates.
@@ -73,12 +77,17 @@ public class MongoService {
         Query query = new Query();
         Criteria criteria = new Criteria();
         params.forEach((k, v) -> {
-            //TODO make it a switch method that handles all possible values
-            if (k.equals("age")) {
-                criteria.and(k).is(Integer.valueOf(v));
-                return;
+            switch (k) {
+                case "age":
+                    criteria.and(k).is(Integer.valueOf(v));
+                    break;
+                case "dob":
+                    criteria.and(k).is(LocalDate.parse(v, DATE_FORMATTER));
+                    break;
+                default:
+                    criteria.and(k).is(v);
+                    break;
             }
-            criteria.and(k).is(v);
         });
         query.addCriteria(criteria);
         return query;
