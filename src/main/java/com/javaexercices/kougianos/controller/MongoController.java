@@ -20,7 +20,7 @@ import java.util.Map;
         havingValue = "true",
         matchIfMissing = true)
 public class MongoController {
-    //TODO
+
     private final MongoService mongoService;
 
     @Autowired
