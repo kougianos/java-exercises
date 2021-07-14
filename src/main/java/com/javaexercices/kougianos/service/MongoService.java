@@ -74,6 +74,10 @@ public class MongoService {
      * @return Query
      */
     private Query createMongoQueryBasedOnParams(Map<String, String> params) {
+        //TODO include support for dateInserted
+        //TODO include support for username like
+        //TODO include support for dob greater than, less than
+        //TODO include support for dateInserted greater than, less than
         Query query = new Query();
         Criteria criteria = new Criteria();
         params.forEach((k, v) -> {
